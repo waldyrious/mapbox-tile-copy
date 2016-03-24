@@ -32,7 +32,7 @@ test('serialtiles-copy: gzipped vector tiles', function(t) {
       t.ifError(err, 'found expected file on s3');
       t.equal(res.statusCode, 200, 'expected status code');
       t.equal(res.headers['content-type'], 'application/x-protobuf', 'expected content-type');
-      t.equal(res.headers['content-length'], '55556', 'expected content-length');
+      t.equal(res.headers['content-length'], '36629', 'expected content-length');
       t.equal(res.headers['content-encoding'], 'gzip', 'expected content-encoding');
       t.equal(tilelive.createWriteStream.getCall(0).args[1].retry, undefined, 'passes options.retry to tilelive.createWriteStream');
       tilelive.createWriteStream.restore();
@@ -57,7 +57,7 @@ test('serialtiles-copy: retry', function(t) {
       t.ifError(err, 'found expected file on s3');
       t.equal(res.statusCode, 200, 'expected status code');
       t.equal(res.headers['content-type'], 'application/x-protobuf', 'expected content-type');
-      t.equal(res.headers['content-length'], '55556', 'expected content-length');
+      t.equal(res.headers['content-length'], '36629', 'expected content-length');
       t.equal(res.headers['content-encoding'], 'gzip', 'expected content-encoding');
       t.equal(tilelive.createWriteStream.getCall(0).args[1].retry, 5, 'passes options.retry to tilelive.createWriteStream');
       tilelive.createWriteStream.restore();
@@ -98,7 +98,7 @@ test('serialtiles-copy: stats', function(t) {
 
   copy(uri, urlTemplate, { stats: true, job: { num: 0, total: 10 } }, function(err, stats) {
     t.ifError(err, 'no error');
-    t.equal(stats.world_merc.count, 245);
+    t.equal(stats.world_merc.count, 194);
     t.end();
   });
 });
