@@ -169,6 +169,7 @@ test('serialtiles-copy: vector tile invalid', function(t) {
     t.ok(err, 'expected error');
     t.equal(err.code, 'EINVALID', 'expected error code');
     t.equal(err.message, 'Invalid data', 'expected error message');
+    t.ok(err.stack, 'error has stacktrace');
     t.end();
   });
 });
